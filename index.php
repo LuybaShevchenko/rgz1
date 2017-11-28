@@ -420,29 +420,30 @@
 echo "<h1 style='text-align:center;'>Самые дорогие предложения разных производителей</h1>";
 $n=0;
 $vendors=[];
-	foreach ($data as $index => $camera){
-		$n=$camera['vendor'];
-			if(in_array($n,$vendors)){
-			}
-			else {
-				$vendors[$index]=$n;
-			}
-	}
+foreach ($data as $index => $camera){
+	$n=$camera['vendor'];			
+		if(in_array($n,$vendors)){
+		}
+		else {
+			$vendors[$index]=$n;
+		}
+}
 
-	foreach($vendors as $index => $vendor){
-		$prices=[];
+foreach($vendors as $index => $vendor){
+	$prices=[];
 		foreach ($data as $navindex => $camera){
 			if($index==$navindex){
 				$prices[]=$camera['prices']['amount'];
 			}
 		}
-$max=0;
-				foreach($prices as $price){
-					$max=$price;
-					if($price<$max){
-						$max=$price;
-					}
-				}
+
+foreach($prices as $price){
+	$max=0;
+	$max=$price;
+		if($price<$max){
+			$max=$price;
+		}
+}
 ?>
 	<table>
 		<tr>
