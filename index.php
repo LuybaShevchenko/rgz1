@@ -374,18 +374,18 @@
   ),
 );
 
-	function WebcameraComp ($camera1, $camera2){
-		if ($camera2 ['prices']['amount']>$camera1 ['prices']['amount']){
-			return 1;
-		}
-		else {
-			if  ($camera2 ['prices']['amount'] < $camera1 ['prices']['amount']){
-				return -1;
-			} else {
-				return 0;
-			}
+function WebcameraComp ($camera1, $camera2){
+	if ($camera2 ['prices']['amount']>$camera1 ['prices']['amount']){
+		return 1;
+	}
+	else {
+		if  ($camera2 ['prices']['amount'] < $camera1 ['prices']['amount']){
+			return -1;
+		} else {
+			return 0;
 		}
 	}
+}
 ?>
 <?php
 	echo "<h1 style='text-align:center;'>ВЕБ-КАМЕРЫ</h1>";
@@ -397,7 +397,7 @@
 		$link = htmlspecialchars ($product['link']);
 ?>
 	<table>
-			<tr>
+		<tr>
 			<td>
 				<img width= "200" height= "160" src="<?php echo $CamPhoto ?>"/>
 
@@ -416,48 +416,48 @@
 		</tr>
 	</table>
 <?php
-}
+	}
 echo "<h1 style='text-align:center;'>Самые дорогие предложения разных производителей</h1>";
 $n=0;
 $vendors=[];
 foreach ($data as $index => $camera){
 	$n=$camera['vendor'];			
-		if(in_array($n,$vendors)){
-		}
-		else {
-			$vendors[$index]=$n;
-		}
+	if(in_array($n,$vendors)){
+	}
+	else {
+		$vendors[$index]=$n;
+	}
 }
 
 foreach($vendors as $index => $vendor){
 	$prices=[];
-		foreach ($data as $navindex => $camera){
-			if($index==$navindex){
-				$prices[]=$camera['prices']['amount'];
-			}
+	foreach ($data as $navindex => $camera){
+		if($index==$navindex){
+			$prices[]=$camera['prices']['amount'];
 		}
+	}
 
 foreach($prices as $price){
 	$max=0;
 	$max=$price;
-		if($price<$max){
-			$max=$price;
-		}
+	if($price<$max){
+		$max=$price;
+	}
 }
 ?>
-	<table>
-		<tr>
-			<td>
-				<ul type="circle">
-				<br>
-					<li><div> <font size="+2" > <?= htmlspecialchars ($vendor)?></font></div></li>
-				</ul>
-			</td>
-			<td>
-				<div> <font size="+2" >- Максимальная цена: <?= htmlspecialchars (number_format (($max),2,',',' ' ))?> руб.</font></div>
-			</td>
-		</tr>
-	</table>
+<table>
+	<tr>
+		<td>
+			<ul type="circle">
+			<br>
+				<li><div> <font size="+2" > <?= htmlspecialchars ($vendor)?></font></div></li>
+			</ul>
+		</td>
+		<td>
+			<div> <font size="+2" >- Максимальная цена: <?= htmlspecialchars (number_format (($max),2,',',' ' ))?> руб.</font></div>
+		</td>
+	</tr>
+</table>
 <?php
-	}
+}
  ?>
